@@ -29,9 +29,35 @@
             
               <p>Record the audio from here</p>
 
+              <div class="app">
+                <select name="" id="micSelect"></select>
+              
+                <select id="visSelect">
+                  <option value="frequencybars">Bar</option>
+                  <option value="sinewave">Wave</option>
+                  <option value="circle">Circle</option>
+                </select>
+              
+                <a id="download" >Download</a>
+              
+                <div class="audio-controls">
+                  <button id="record">Record</button>
+                  <button id="stop">Stop</button>
+                  <audio id="audio" controls></audio>
+                </div>
+              
+                <div id="msg">Recording...</div>
+                <canvas ></canvas>
+              </div>
+
+ 
+
               
 
           </div>
+
+
+
           <div class="col-md-6">
             <h2>Audio Preview</h2>
             <p>Please select the audio file. </p>
