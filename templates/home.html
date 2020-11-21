@@ -1,0 +1,71 @@
+{% extends 'layout.html' %}
+{% block body %}
+
+    <main role="main">
+
+      <!-- Main jumbotron for a primary marketing message or call to action -->
+      <div class="jumbotron">
+        <div class="container">
+          <h1 class="display-3">Hello, world!</h1>
+          <p>We analyse audio files and analyse sentiment out of them.</p>
+        </div>
+      </div>
+
+      <div class="container">
+        <!-- Example row of columns -->
+        <div class="row">
+          <div class="col-md-6">
+            <h2>Audio Input</h2>
+            <p>Please upload the sound clip here</p>
+              </form><form action="/audioinput" method="post" enctype="multipart/form-data">
+                <div class="rightp">
+                  <div class="form-group">
+                    <!-- Mention accepting audio extensions in "accept" section below -->
+                    <input name="audiofile" id="audiofile" type="file"> 
+                    <input type="submit" value = "Upload"/>
+                  </div>
+                </div>
+              </form>
+            
+              <p>Record the audio from here</p>
+
+              
+
+          </div>
+          <div class="col-md-6">
+            <h2>Audio Preview</h2>
+            <p>Please select the audio file. </p>
+
+            <form action="/playaudio" method="post">
+              <div id="mainselection">
+                <select name="dropdown">
+                  <option selected>Select an audio</option>
+                  {% for audio in to_populate %}
+                  <option value="{{audio}}">{{audio}}</option>
+                  {% endfor %}
+                </select>
+              <button class="button execute" name="submit" value="submit">Submit</button>
+            </div>
+
+            </form>
+            <div id="audio_player">
+            {% for audio in to_play %}
+            <audio controls>
+              <source src="{{ url_for('static', filename=audio) }}" type="audio/ogg">
+              <source src="{{ url_for('static', filename=audio) }}" type="audio/wav">
+                <source src="{{ url_for('static', filename=audio) }}" type="audio/mpeg">
+            </audio>
+            {% endfor %}
+          </div>
+  
+
+          </div>
+
+        </div>
+
+        <hr>
+
+      </div> <!-- /container -->
+
+    </main>
+{% endblock %}
